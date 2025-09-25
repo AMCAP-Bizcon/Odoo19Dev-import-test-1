@@ -1,0 +1,31 @@
+{
+  "name": "Odoo 19 Dev",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "odoo",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-xml",
+        "dbaeumer.vscode-eslint",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "python.analysis.typeCheckingMode": "basic",
+        "python.formatting.provider": "black"
+      }
+    }
+  },
+  "postCreateCommand": "mkdir -p addons && echo 'Ready' && python3 --version && odoo --version",
+  "forwardPorts": [8069]
+}
+
