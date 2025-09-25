@@ -1,12 +1,17 @@
 {
-  "name": "Odoo 19 Dev",
+  "name": "Odoo 19 Dev (Codespaces)",
   "dockerComposeFile": ["../docker-compose.yml"],
   "service": "odoo",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "overrideCommand": false,
+
+  "remoteUser": "root",
+
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/node:1": {}
   },
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -25,7 +30,12 @@
       }
     }
   },
-  "postCreateCommand": "mkdir -p addons && echo 'Ready' && python3 --version && odoo --version",
-  "forwardPorts": [8069]
-}
 
+  "postCreateCommand": "mkdir -p addons && chown -R root:root /workspaces && odoo --version",
+  "forwardPorts": [8069],
+  "portsAttributes": {
+    "8069": { "label": "Odoo 19", "onAutoForward": "openBrowser" }
+  },
+  "shutdownAction": "stopCompose",
+  "hostRequirements": { "cpus": 4, "memory": "8gb", "storage": "16gb" }
+}
