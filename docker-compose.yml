@@ -37,7 +37,7 @@ services:
       "--dev=reload,qweb,xml"
     ]
     # Important for Codespaces: allow the workspace to mount cleanly
-    working_dir: /workspaces/Odoo19Dev
+    working_dir: /workspaces/${localWorkspaceFolderBasename}
 
 volumes:
   db-data:
