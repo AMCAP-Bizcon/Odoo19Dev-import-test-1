@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem id="menu_demo_root" name="Demo Module"/>
+    <menuitem id="menu_demo_custom" name="Custom Records"
+        parent="menu_demo_root"
+        action="action_demo_custom"/>
+</odoo>
